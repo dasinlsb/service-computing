@@ -1,0 +1,27 @@
+version: '3.7'
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: fmb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - '5432:5432'
+
+  server:
+    #image: dasinlsb/fmback:latest
+    build: ./backend
+    ports:
+      - '8080:8080'
+    depends_on:
+      - db
+    command: ["/wait-for-it.sh", "db:5432", "--", "/backend"] 
+    
+  web:
+    #image: dasinlsb/fmfront:latest
+    build: ./frontend
+    ports:
+      - '3000:80'  
+    depends_on:
+      - server

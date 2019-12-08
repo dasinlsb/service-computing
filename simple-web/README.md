@@ -4,10 +4,6 @@ SYSU 2019 Service Computing [Homework](https://pmlpml.github.io/ServiceComputing
 
 A simple web application that craws and displays a part of [Emacs China](https://emacs-china.org)
 
-[frontend repo](https://github.com/dasinlsb/forum-mirror-frontend)
-
-[backend repo](https://github.com/dasinlsb/forum-mirror-backend)
-
 ## Build & Run
 
 ### Docker
@@ -37,12 +33,12 @@ Backend's  configuration is `config/config.go`
 Default connection to postgres will assume:
 
 + host: localhost:5432 
-+ username: postgres  
++ username: postgres
 + password: postgres
 
 #### Run backend
 
-Let api-server listen on `localhost:8080`
+Let server listen on `localhost:8080`
 
 ```bash
 go run main.go
@@ -57,4 +53,4 @@ yarn
 yarn start
 ```
 
-The you can visit the page on browser
+The you can visit the application on browser

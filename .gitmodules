@@ -1,6 +1,0 @@
-[submodule "simple-web/backend"]
-	path = simple-web/backend
-	url = https://github.com/dasinlsb/forum-mirror-backend
-[submodule "simple-web/frontend"]
-	path = simple-web/frontend
-	url = https://github.com/dasinlsb/forum-mirror-frontend
