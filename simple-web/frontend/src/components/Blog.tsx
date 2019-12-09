@@ -17,7 +17,7 @@ const AuthRoute: React.FC<RouteProps> = ({component, ...rest}) => {
     <Route
       {...rest}
       render={(props) => {
-        console.log("Will render AuthRoute, isAuthenticated:", auth.state.isAuthenticated);
+        //console.log("Will render AuthRoute, isAuthenticated:", auth.state.isAuthenticated);
         return auth.state.isAuthenticated ? (
           <Component {...props} />
         ) : (

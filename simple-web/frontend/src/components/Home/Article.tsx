@@ -1,20 +1,13 @@
 import React, {useContext, useEffect, useReducer} from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
-import ForumTwoToneIcon from '@material-ui/icons/ForumTwoTone';
-import PeopleAltTwoToneIcon from '@material-ui/icons/PeopleAltTwoTone';
-import LocalOfferTwoToneIcon from '@material-ui/icons/LocalOfferTwoTone';
 import {Paper} from "@material-ui/core";
 import {Redirect} from "react-router";
 import {useAuth} from "../AuthProvider";
-import {Link} from "react-router-dom";
+
 import Grid from "@material-ui/core/Grid";
+import Link from "@material-ui/core/Link";
 
 
 const useStyles = makeStyles(theme => ({
@@ -28,6 +21,7 @@ interface ArticleData {
   title: string;
   content: string;
   floors: number;
+  url: string;
 }
 
 interface ArticleProps {
@@ -54,7 +48,8 @@ const initState: ArticleState = {
   articleList: ['?', '?'].map(s => ({
     'title': s,
     'content': s,
-    'floors': -1,
+    'floors': 0,
+    'url': 'https://emacs-china.org',
   })),
   page: 1,
 };
@@ -83,26 +78,26 @@ const Article: React.FC<ArticleProps> = (props: any) => {
       )
       .catch(e => {
         console.log('Fetch article data failed: ', e);
-        dispatch({ type: 'refresh_data', status: true, data: initState.articleList });
+        dispatch({ type: 'refresh_data', status: true, data: state.articleList });
       })
   };
 
   useEffect(() => {
-    //if (!state.hasFetched) {
       fetchData();
-    //}
   }, []);
 
   if (!auth.state.isAuthenticated) {
     return <Redirect to={'/login'} />
   }
 
-  const article = state.articleList.map(({title, content, floors}: ArticleData, index: number) => (
+  const article = state.articleList.map(({title, content, floors, url}: ArticleData, index: number) => (
     <Paper className={classes.articlePaper} key={index} onClick={() => console.log('go')}>
       <Grid container>
         <Grid item xs={8}>
           <Typography variant="h5" component="h3">
-            {title}
+            <Link href={url}>
+              {title}
+            </Link>
           </Typography>
         </Grid>
         <Grid item xs={4}>

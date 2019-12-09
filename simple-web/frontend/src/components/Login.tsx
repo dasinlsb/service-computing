@@ -126,7 +126,7 @@ const Login: React.FC<LoginProps> = (props: any) => {
         console.log('Authentication error: ', err, ', will goto Login page')
       });
     }
-  });
+  }, []);
 
 
     return (

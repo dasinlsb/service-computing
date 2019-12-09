@@ -8,13 +8,8 @@ export interface AuthState {
   jwt: string;
 }
 
-const anchor = () => {
-  console.log('It is trying to reset isAuthenticated');
-  return false;
-};
-
 const initState = {
-  isAuthenticated: anchor(),
+  isAuthenticated: false,
   currentUser: '',
   jwt: '',
 };
@@ -46,7 +41,7 @@ interface IAuthContext {
     => Promise<{ username: string; jwt: string; }>);
   logout: (() => Promise<any>);
   auth: (() => Promise<{ username: string; jwt: string; }>);
-  fetchArticleList: ((page: number) => Promise<{title: string; content: string; floors: number}[]>);
+  fetchArticleList: ((page: number) => Promise<{title: string; content: string; floors: number, url: string; }[]>);
 }
 
 const AuthContext = createContext<IAuthContext>({} as IAuthContext);

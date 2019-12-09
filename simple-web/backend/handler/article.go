@@ -46,6 +46,7 @@ func GetArticleList(c *gin.Context) {
 		Title string `json:"title"`
 		Content string `json:"content"`
 		Floors int `json:"floors"`
+		Url string `json:"url"`
 	}
 	var data []Article
 	for _, article := range articles {
@@ -53,6 +54,7 @@ func GetArticleList(c *gin.Context) {
 			Title:   article.Title,
 			Content: "",
 			Floors: article.Floors,
+			Url:article.PageURL,
 		})
 	}
 	c.JSON(http.StatusOK, gin.H{

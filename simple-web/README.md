@@ -4,6 +4,13 @@ SYSU 2019 Service Computing [Homework](https://pmlpml.github.io/ServiceComputing
 
 A simple web application that craws and displays a part of [Emacs China](https://emacs-china.org)
 
+## Preview
+
+![gif demo](doc/show.gif)
+
++ Please login with `username = dasin, password = 123`, because register part is not implemented yet >_<
++ Server will re-grab data every 30 minutes
+
 ## Build & Run
 
 ### Docker
@@ -19,6 +26,8 @@ Run the following command and visit `localhost:3000` on browser:
 docker-compose up -d
 ```
 
+Required free ports are 3000(web), 8080(server), 5432(db), you can modify them in `./docker-compose.yml` if needed.
+
 ### Without Docker
 
 #### Prerequisites
@@ -30,18 +39,18 @@ docker-compose up -d
 
 Backend's  configuration is `config/config.go`
 
-Default connection to postgres will assume:
+Default connection from [gorm](https://github.com/jinzhu/gorm) to postgres will assume:
 
-+ host: localhost:5432 
++ host: db:5432 
 + username: postgres
 + password: postgres
 
 #### Run backend
 
-Let server listen on `localhost:8080`
+Let server listen on `localhost:8080`, run the executable with 0, 1 or 2 arguments as following.
 
 ```bash
-go run main.go
+go run main.go [(none)|host:port|host port]
 ```
 
 #### Run frontend
