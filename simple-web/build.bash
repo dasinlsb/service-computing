@@ -7,5 +7,8 @@ curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VER
 chmod +x ./docker-compose
 ./docker-compose --version
 sudo mv docker-compose /usr/local/bin
-sudo docker-compose -p simple-web pull
-sudo docker-compose -p simple-web build
+
+cd simple-web
+pwd
+sudo docker-compose pull
+sudo docker-compose build
