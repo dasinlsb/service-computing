@@ -1,0 +1,10 @@
+language: bash
+service:
+  - docker
+sudo: required
+branches:
+  only:
+  - master
+
+script:
+  - bash simple-web/build.bash
