@@ -1,5 +1,7 @@
 # Forum Mirror
 
+[![Build Status](https://travis-ci.com/dasinlsb/service-computing.svg?branch=master)](https://travis-ci.com/dasinlsb/service-computing)
+
 SYSU 2019 Service Computing [Homework](https://pmlpml.github.io/ServiceComputingOnCloud/ex-services)
 
 A simple web application that craws and displays a part of [Emacs China](https://emacs-china.org)
@@ -26,7 +28,7 @@ Run the following command and visit `localhost:3000` on browser:
 docker-compose up -d
 ```
 
-Required free ports are 3000(web), 8080(server), 5432(db), you can modify them in `./docker-compose.yml` if needed.
+You can modify exposed ports for web(3000) and for db(5432) in `./docker-compose.yml` if needed.
 
 ### Without Docker
 
@@ -47,19 +49,19 @@ Default connection from [gorm](https://github.com/jinzhu/gorm) to postgres will 
 
 #### Run backend
 
-Let server listen on `localhost:8080`, run the executable with 0, 1 or 2 arguments as following.
+Let server listen on `localhost:8080`
 
 ```bash
 go run main.go [(none)|host:port|host port]
 ```
 
+Pass 0, 1 or 2 arguments described above to configure the database connection if needed.
+
 #### Run frontend
 
-Launch React app on `localhost:3000` 
+Launch React app on `localhost:3000` and visit it on browser
 
 ```bash
 yarn
 yarn start
 ```
-
-The you can visit the application on browser
